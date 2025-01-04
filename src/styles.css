@@ -1,8 +1,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 
 :root{
-    --gray-light:#DCDBDD;
+    --gray-light:#FBFCFC;
     --primary:#33A3AA;
+    --primary-hover:#07d1df;
     --panel-backg:#E9F1F4;
     --light-text:#838B9E;
     --phone-panel-back:#F9F9FA;
@@ -15,4 +16,35 @@
     box-sizing: border-box;
     padding: 0;
     margin: 0;
+}
+
+p{
+    font-weight: 400;
+    font-size: 14px;
+    /* font-size: clamp(0.8rem,1vw,1rem); */
+}
+
+.primary-button{
+    background-color: var(--primary);
+    color:white;
+    border-radius: var(--global-border-radius);
+    padding: 1rem 2rem;
+    border: none;
+}
+
+.primary-button:not(:disabled):hover{
+    background-color: var(--primary-hover);
+    cursor: pointer;
+}
+
+.primary-button:disabled{
+    opacity: 0.5;
+}
+
+span{
+    color: var(--primary);
+}
+
+.error{
+    color:red;
 }

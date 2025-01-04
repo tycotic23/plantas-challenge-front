@@ -1,1 +1,35 @@
-<p>login works!</p>
+<div class="content">
+    <div class="login-back">
+        <h1>Iniciar sesión</h1>
+        <p>Nos alegra tenerte de vuelta y estamos listos para atender tus necesidades. Inicia sesión y continúa aprovechando al máximo nuestra plataforma.</p>
+        <div class="login-back--item">
+            <img class="icon" src="./assets/monitoreo-integral.svg" alt="">
+            <div>
+                <h4>Monitoreo integral</h4>
+                <p>Administra, monitorea mutiples plantas de forma centralizada</p>
+            </div>
+        </div>
+        <div class="login-back--item">
+            <img class="icon" src="./assets/notificaciones-icon.svg" alt="">
+            <div>
+                <h4>Notificaciones en tiempo real</h4>
+                <p>Recibi notificaciones en tiempo real sobre las mediciones</p>
+            </div>
+        </div>
+    </div>
+    <div class="login">
+        <h2>Portal de monitoreo</h2>
+        <h3>Iniciar sesión</h3>
+        <form [formGroup]="loginForm">
+            <label for="email"><input type="email" id="email" formControlName="email" required></label>
+            <p class="error" *ngIf="loginForm.get('email')?.errors && (loginForm.get('email')?.dirty || loginForm.get('email')?.touched)">Email inválido</p>
+            <label class="input-container" for="password"><input placeholder="Contraseña" [type]="(seePassword)?'text':'password'" id="password" formControlName="password"><button (click)="tooglePassword()" class="input-icon"><img  src="./assets/view.svg" alt=""></button></label>
+            <p class="error" *ngIf="loginForm.get('password')?.errors && (loginForm.get('password')?.dirty || loginForm.get('password')?.touched)">Falta contraseña</p>
+            <div class="actions-form">
+                <p>¿Olvidaste tu contraseña?</p>
+                <button type="submit" class="primary-button" [disabled]="!loginForm.valid" (click)="login($event)">Iniciar sesión</button>
+            </div>
+        </form>
+        <p class="p-small">Protegido por reCAPTCHA y sujeto a la <span>Política de Privacidad</span> y <span>Condiciones.</span></p>
+    </div>
+</div>
