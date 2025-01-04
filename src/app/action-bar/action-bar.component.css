@@ -1,0 +1,27 @@
+nav{
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 1rem;
+    gap:2rem;
+    
+}
+
+.icon-logo{
+    width: 36px;
+    padding-bottom: 4rem;
+}
+
+.icon{
+    width: 20px;
+}
+
+button{
+    background: none;
+    border:none;
+}
+
+button:hover{
+    cursor: pointer;
+}

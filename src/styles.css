@@ -48,3 +48,96 @@ span{
 .error{
     color:red;
 }
+
+.readings{
+    display: flex;
+    gap:2rem;
+    /* flex-wrap: wrap; */
+}
+
+h1.dashboard-title{
+    font-weight: 500;
+    font-size: 30px;
+    line-height: 45px;
+}
+
+.dashboard-section{
+    background-color: white;
+    border-radius: var(--global-border-radius);
+    padding: 1.5rem 1rem;
+}
+
+.dashboard-readings{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-grow: 1;
+    gap:2rem;
+}
+
+.dashboard-section--info{
+    width: 100%;
+}
+
+.dashboard-section--info h3{
+    color: var(--light-text);
+    font-weight: 400;
+    font-size: 12px;
+}
+
+.dashboard-section--info p{
+    font-weight: 700;
+    font-size: 20px;
+    
+}
+
+.dashboard-section--info .small-reading{
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 2;
+}
+
+.dashboard-section--img{
+    width: 60px;
+}
+
+.dashboard-table table{
+    text-align: left;
+    width: 100%;
+}
+
+.table-header{
+    display: flex;
+    align-items: center;
+    gap:2rem;
+}
+
+hr{
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    border-color: #F3F6F7;
+    border-width: 1px;
+}
+
+.table-header h2{
+    font-weight: 600;
+    font-size: 16px;
+}
+
+.table-header--button{
+   border: none;
+   border:1px solid #B0CAD1;
+   border-radius: 5px;
+   padding: 0.25rem 1rem;
+   background: none;
+}
+
+.dashboard-table th{
+    font-weight: 500;
+    font-size: 14px;
+    color:#B0CAD1;
+}
+
+.flex{
+    display: flex;
+}
