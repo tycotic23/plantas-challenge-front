@@ -23,11 +23,11 @@
         <form [formGroup]="loginForm">
             <label for="email"><input type="email" id="email" formControlName="email" required></label>
             <p class="error" *ngIf="loginForm.get('email')?.errors && (loginForm.get('email')?.dirty || loginForm.get('email')?.touched)">Email inválido</p>
-            <label class="input-container" for="password"><input placeholder="Contraseña" [type]="(seePassword)?'text':'password'" id="password" formControlName="password"><button (click)="tooglePassword()" class="input-icon"><img  src="./assets/view.svg" alt=""></button></label>
+            <label class="input-container" for="password"><input required placeholder="Contraseña" [type]="(seePassword)?'text':'password'" id="password" formControlName="password"><button (click)="tooglePassword()" class="input-icon"><img  src="./assets/view.svg" alt=""></button></label>
             <p class="error" *ngIf="loginForm.get('password')?.errors && (loginForm.get('password')?.dirty || loginForm.get('password')?.touched)">Falta contraseña</p>
             <div class="actions-form">
                 <p>¿Olvidaste tu contraseña?</p>
-                <button type="submit" class="primary-button" [disabled]="!loginForm.valid" (click)="login($event)">Iniciar sesión</button>
+                <button type="submit" class="login-button" [disabled]="!loginForm.valid" (click)="login($event)">Iniciar sesión</button>
             </div>
         </form>
         <p class="p-small">Protegido por reCAPTCHA y sujeto a la <span>Política de Privacidad</span> y <span>Condiciones.</span></p>

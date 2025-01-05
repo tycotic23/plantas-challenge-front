@@ -35,7 +35,7 @@
         <div class="dashboard-section dashboard-table">
             <div class="table-header">
                 <h2>Plantas</h2>
-                <button class="table-header--button">+ Crear nueva planta</button>
+                <button (click)="getInCreate()" class="table-header--button">+ Crear nueva planta</button>
             </div>
             <hr>
             <table>
@@ -155,4 +155,7 @@
         </div>
     </div>
     
+</div>
+<div *ngIf="createMode" class="popup">
+    <app-create-factory></app-create-factory>
 </div>

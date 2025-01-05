@@ -1,0 +1,16 @@
+<form [formGroup]="createFactoryForm" class="dashboard-section dashboard-form">
+    <h2>Crear nueva planta</h2>
+    <div class="dashboard-form--content">
+        <label for="name">Nombre planta</label>
+        <input type="text" placeholder="Ingrese nombre" id="name" formControlName="name">
+        <label for="country">País</label>
+        <select type="text" placeholder="Seleccione país" id="country" formControlName="country_id">
+            <option value="1">asdasd</option>
+        </select>
+    </div>
+    <div class="buttons-bar">
+        <button type="button" class="secondary-button">Cancelar</button>
+        <button type="submit" class="primary-button">Crear</button>
+    </div>
+    
+</form>

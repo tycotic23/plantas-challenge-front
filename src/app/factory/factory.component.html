@@ -1,1 +1,131 @@
-<p>factory works!</p>
+<div class="container">
+    <action-bar class="shadow"></action-bar>
+    <div class="content">
+        <h1 class="dashboard-title">Monitoreo por planta</h1>
+        <div class="dashboard-section dashboard-table">
+            <div class="table-header">
+                <h2>Buscar planta</h2>
+                <input type="text">
+                <button class="table-header--button">Buscar</button>
+            </div>
+            <hr>
+            <table>
+                <tr>
+                    <th>País</th>
+                    <th>Nombre de la planta</th>
+                    <th>Lecturas</th>
+                    <th>Alertas medias</th>
+                    <th>Alertas rojas</th>
+                    <th>Acciones</th>
+                </tr>
+                <tr>
+                    <td>
+                        <img src="" alt="">
+                        Argentina
+                    </td>
+                    <td>Quilmes</td>
+                    <td>300</td>
+                    <td>10</td>
+                    <td>2</td>
+                    <td><img class="icon" src="./assets/acciones.svg" alt=""></td>
+                </tr>
+            </table>
+        </div>
+        <!-- solo mostrar si hay alguna planta seleccionada -->
+         <h2 class="less-h2">Indicadores de PLANTA</h2>
+        <div class="readings">
+            <div class="dashboard-section dashboard-readings">
+                <div class="dashboard-section--info">
+                    <h3>Temperatura</h3>
+                    <div class="dashboard-readings">
+                        <p class="flex small-reading"><img class="icon-reading" src="./assets/ok-l.svg" alt="">100</p>
+                        <p class="flex small-reading"><img class="icon-reading" src="./assets/alertas-medias-l.svg" alt="">100</p>
+                        <p class="flex small-reading"><img class="icon-reading" src="./assets/alertas-rojas-l.svg" alt="">100</p>
+                    </div>
+                </div>
+                <img class="dashboard-section--img" src="./assets/temperatura.svg" alt="">
+            </div>
+            <div class="dashboard-section dashboard-readings">
+                <div class="dashboard-section--info">
+                    <h3>Presión</h3>
+                    <div class="dashboard-readings">
+                        <p class="flex small-reading"><img class="icon-reading" src="./assets/ok-l.svg" alt="">100</p>
+                        <p class="flex small-reading"><img class="icon-reading" src="./assets/alertas-medias-l.svg" alt="">100</p>
+                        <p class="flex small-reading"><img class="icon-reading" src="./assets/alertas-rojas-l.svg" alt="">100</p>
+                    </div>
+                </div>
+                <img class="dashboard-section--img" src="./assets/presion.svg" alt="">
+            </div>
+            <div class="dashboard-section dashboard-readings">
+                <div class="dashboard-section--info">
+                    <h3>Viento</h3>
+                    <div class="dashboard-readings">
+                        <p class="flex small-reading"><img class="icon-reading" src="./assets/ok-l.svg" alt="">100</p>
+                        <p class="flex small-reading"><img class="icon-reading" src="./assets/alertas-medias-l.svg" alt="">100</p>
+                        <p class="flex small-reading"><img class="icon-reading" src="./assets/alertas-rojas-l.svg" alt="">100</p>
+                    </div>
+                </div>
+                <img class="dashboard-section--img" src="./assets/viento.svg" alt="">
+            </div>
+            <div class="dashboard-section dashboard-readings">
+                <div class="dashboard-section--info">
+                    <h3>Niveles</h3>
+                    <div class="dashboard-readings">
+                        <p class="flex small-reading"><img class="icon-reading" src="./assets/ok-l.svg" alt="">100</p>
+                        <p class="flex small-reading"><img class="icon-reading" src="./assets/alertas-medias-l.svg" alt="">100</p>
+                        <p class="flex small-reading"><img class="icon-reading" src="./assets/alertas-rojas-l.svg" alt="">100</p>
+                    </div>
+                </div>
+                <img class="dashboard-section--img" src="./assets/niveles.svg" alt="">
+            </div>
+        </div>
+        <div class="readings">
+            <div class="dashboard-section dashboard-readings">
+                <div class="dashboard-section--info">
+                    <h3>Energía</h3>
+                    <div class="dashboard-readings">
+                        <p class="flex small-reading"><img class="icon-reading" src="./assets/ok-l.svg" alt="">100</p>
+                        <p class="flex small-reading"><img class="icon-reading" src="./assets/alertas-medias-l.svg" alt="">100</p>
+                        <p class="flex small-reading"><img class="icon-reading" src="./assets/alertas-rojas-l.svg" alt="">100</p>
+                    </div>
+                </div>
+                <img class="dashboard-section--img" src="./assets/energia.svg" alt="">
+            </div>
+            <div class="dashboard-section dashboard-readings">
+                <div class="dashboard-section--info">
+                    <h3>Tensión</h3>
+                    <div class="dashboard-readings">
+                        <p class="flex small-reading"><img class="icon-reading" src="./assets/ok-l.svg" alt="">100</p>
+                        <p class="flex small-reading"><img class="icon-reading" src="./assets/alertas-medias-l.svg" alt="">100</p>
+                        <p class="flex small-reading"><img class="icon-reading" src="./assets/alertas-rojas-l.svg" alt="">100</p>
+                    </div>
+                </div>
+                <img class="dashboard-section--img" src="./assets/tension.svg" alt="">
+            </div>
+            <div class="dashboard-section dashboard-readings">
+                <div class="dashboard-section--info">
+                    <h3>Monóxido de carbono</h3>
+                    <div class="dashboard-readings">
+                        <p class="flex small-reading"><img class="icon-reading" src="./assets/ok-l.svg" alt="">100</p>
+                        <p class="flex small-reading"><img class="icon-reading" src="./assets/alertas-medias-l.svg" alt="">100</p>
+                        <p class="flex small-reading"><img class="icon-reading" src="./assets/alertas-rojas-l.svg" alt="">100</p>
+                    </div>
+                </div>
+                <img class="dashboard-section--img" src="./assets/co2.svg" alt="">
+            </div>
+            <div class="dashboard-section dashboard-readings">
+                <div class="dashboard-section--info">
+                    <h3>Otros gases</h3>
+                    <div class="dashboard-readings">
+                        <p class="flex small-reading"><img class="icon-reading" src="./assets/ok-l.svg" alt="">100</p>
+                        <p class="flex small-reading"><img class="icon-reading" src="./assets/alertas-medias-l.svg" alt="">100</p>
+                        <p class="flex small-reading"><img class="icon-reading" src="./assets/alertas-rojas-l.svg" alt="">100</p>
+                    </div>
+                </div>
+                <img class="dashboard-section--img" src="./assets/otros-gases.svg" alt="">
+            </div>
+        </div>
+    </div>
+    
+</div>
+
