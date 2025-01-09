@@ -27,8 +27,9 @@
             <p class="error" *ngIf="loginForm.get('password')?.errors && (loginForm.get('password')?.dirty || loginForm.get('password')?.touched)">Falta contraseña</p>
             <div class="actions-form">
                 <p>¿Olvidaste tu contraseña?</p>
-                <button type="submit" class="login-button" [disabled]="!loginForm.valid" (click)="login($event)">Iniciar sesión</button>
+                <button type="submit" class="login-button" [disabled]="!loginForm.valid || msg" (click)="login($event)">Iniciar sesión</button>
             </div>
+            <p class="error">{{msg}}</p>
         </form>
         <p class="p-small">Protegido por reCAPTCHA y sujeto a la <span>Política de Privacidad</span> y <span>Condiciones.</span></p>
     </div>

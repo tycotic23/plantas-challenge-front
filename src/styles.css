@@ -38,6 +38,15 @@ p{
     border: none;
 }
 
+.login-button:disabled{
+   opacity: 0.5;
+}
+
+.login-button:not(:disabled):hover{
+    cursor: pointer;
+    filter: brightness(1.2);
+ }
+
 .primary-button{
     background-color: var(--primary);
     color:white;
