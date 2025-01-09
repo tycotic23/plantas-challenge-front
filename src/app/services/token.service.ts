@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { configFactories } from '../configFactories';
+import { CookieService } from 'ngx-cookie-service';
 
 const TOKEN_KEY:string='AuthToken';
 const USERNAME_KEY:string='AuthUserName';
@@ -11,28 +12,28 @@ const USERNAME_KEY:string='AuthUserName';
 export class TokenService {
 
   idTimeMsg?:any;
-  constructor(private router:Router) { }
+  constructor(private router:Router,private cookieService:CookieService) { }
 
   public setToken(token:string):void{
-    window.localStorage.removeItem(TOKEN_KEY);
-    window.localStorage.setItem(TOKEN_KEY,token);
+    this.cookieService.delete(TOKEN_KEY);
+    this.cookieService.set(TOKEN_KEY,token);
   }
 
   public getToken(){
-      return localStorage.getItem(TOKEN_KEY);
+      return this.cookieService.get(TOKEN_KEY);
   }
 
   public setUserName(userName:string):void{
-    window.localStorage.removeItem(USERNAME_KEY);
-    window.localStorage.setItem(USERNAME_KEY,userName);
+    this.cookieService.delete(USERNAME_KEY);
+    this.cookieService.set(USERNAME_KEY,userName);
   }
 
   public getUserName(){
-    return window.localStorage.getItem(USERNAME_KEY);
+    return this.cookieService.get(USERNAME_KEY);
   }
 
   public logOut():void{
-    window.localStorage.clear();
+    this.cookieService.deleteAll();
     this.destroyAutoLogout();
     this.router.navigate(['/login']);
   }
