@@ -1,0 +1,19 @@
+.marco{
+    z-index: 10;
+    
+    
+    position: fixed;
+    bottom: 0;
+    left: 0;
+
+    width: 100vw;
+    padding: 1rem;
+    
+}
+
+.content{
+    background-color: white;
+    border: gray 1px solid;
+    max-width: 100%;
+    padding: 1rem;
+}

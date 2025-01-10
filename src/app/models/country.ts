@@ -1,5 +1,8 @@
 export interface Country{
-    id:number;
-    name:string;
-    flag:string;
+    flags:{
+        svg:string;
+    };
+    name:{
+        common:string;
+    }
 }

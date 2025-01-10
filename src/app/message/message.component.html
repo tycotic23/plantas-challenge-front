@@ -1,0 +1,6 @@
+<div class="marco" *ngIf="messageService.getMessage()">
+    <div (click)="messageService.deleteMessage()" class="content">
+        <h3>Mensaje:</h3>
+        <p>{{messageService.getMessage()}}</p>
+    </div>
+</div>

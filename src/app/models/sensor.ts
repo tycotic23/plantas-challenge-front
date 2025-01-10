@@ -27,3 +27,13 @@ export interface SensorUpdate{
     red_alerts?:number;
     disabled_sensors?:number;
 }
+
+
+export interface SensorDTO{
+    id:number;
+    type:string;
+    readings:number;
+    medium_alerts:number;
+    red_alerts:number;
+    disabled_sensors:number;
+}

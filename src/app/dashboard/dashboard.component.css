@@ -26,3 +26,10 @@
 .icon-reading{
     width: 14px;
 }
+
+.flag{
+    border-radius: 50%;
+    width: 30px;
+    aspect-ratio: 1;
+    object-fit: cover;
+}

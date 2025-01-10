@@ -18,8 +18,4 @@ export class AuthService {
         'Content-Type': 'application/json'})
     }).pipe();
   }
-
-  /* public login(loginUser:UserLogin): Observable<string>{
-    return this.http.get<string>(configFactories.baseUrl+"/user/checkLogin").pipe();
-  } */
 }
