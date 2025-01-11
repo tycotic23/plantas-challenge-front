@@ -30,3 +30,12 @@
 .less-h2{
     font-weight: 400;
 }
+
+.action-td{
+    width: 20%;
+}
+
+.secondary-button{
+    border: none;
+    outline: 2px solid var(--primary);
+}

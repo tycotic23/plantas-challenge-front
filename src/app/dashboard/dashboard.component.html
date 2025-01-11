@@ -47,7 +47,7 @@
                     <th>Alertas rojas</th>
                     <th>Acciones</th>
                 </tr>
-                <tr *ngFor="let factory of factories">
+                <tr *ngFor="let factory of factories;let i=index">
                     <td>
                         <img class="flag" [src]="factory.flag" [alt]="'Bandera de '+factory.country">
                         {{factory.country}}
@@ -56,11 +56,14 @@
                     <td>{{factory.readings}}</td>
                     <td>{{factory.medium_alerts}}</td>
                     <td>{{factory.red_alerts}}</td>
-                    <td class="actions-menu-container">
-                        <img class="icon" src="./assets/acciones.svg" alt="">
-                        <div class="actions-menu">
-                            <button class="tooltip"><img src="./assets/edit.svg" alt=""><span class="tooltiptextup">Editar planta</span></button>
-                            <button class="tooltip"><img src="./assets/delete.svg" alt=""><span class="tooltiptextup">Eliminar planta</span></button>
+                    <td>
+                        <div class="actions-menu-container">
+                            <img class="icon rotate" src="./assets/acciones.svg" alt="">
+                            <!-- <input name="actions-menu"  type="checkbox" [id]="'toogle-actions-menu-'+factory.id"> -->
+                            <div class="actions-menu">
+                                <button (click)="getInEdit(factory.id)" class="tooltip"><img src="./assets/edit.svg" alt=""><span class="tooltiptextup">Editar planta</span></button>
+                                <button (click)="deleteFactory(factory.id)" class="tooltip"><img src="./assets/delete.svg" alt=""><span class="tooltiptextup">Eliminar planta</span></button>
+                            </div>
                         </div>
                     </td>
                 </tr>
@@ -162,7 +165,7 @@
     </div>
     
 </div>
-<div *ngIf="createMode" class="popup">
+<div *ngIf="createMode==1" class="popup">
     <form [formGroup]="createFactoryForm" class="dashboard-section dashboard-form">
         <h2>Crear nueva planta</h2>
         <div class="dashboard-form--content">
@@ -179,6 +182,34 @@
         <div class="buttons-bar">
             <button type="button" (click)="getOutCreate()" class="secondary-button">Cancelar</button>
             <button type="submit" (click)="acceptCreate($event)" [disabled]="!createFactoryForm.valid" class="primary-button">Crear</button>
+        </div>
+        
+    </form>
+</div>
+<div *ngIf="createMode==2" class="popup">
+    <form [formGroup]="editFactoryForm" class="dashboard-section dashboard-form">
+        <h2>Editar planta</h2>
+        <div class="dashboard-form--content--grid">
+            <label for="name">Nombre planta <input type="text" placeholder="Ingrese nombre" id="name" formControlName="name"></label>
+            
+            <label for="country">País <input type="text" id="country" formControlName="country"></label>
+            <label for="type"> Tipo de sensor
+                <select type="text" placeholder="Seleccione país" id="type" formControlName="type">
+                    <option [value]="null">Elegir tipo</option>
+                    <option *ngFor="let type of [types.CO2,types.ENERGIA,types.NIVELES,types.OTROS,types.PRESION,types.TEMPERATURA,types.TENSION,types.VIENTO]" [value]="type">
+                        {{type}}
+                    </option>
+                </select>
+            </label>
+            <label for="readings">Cantidad de lecturas <input type="number" id="readings" formControlName="readings"></label>
+            <label for="medium_alerts">Alertas medias<input type="number" id="medium_alerts" formControlName="medium_alerts"></label>
+            <label for="red_alerts">Alertas rojas<input type="number" id="red_alerts" formControlName="red_alerts"></label>
+            
+            
+        </div>
+        <div class="buttons-bar">
+            <button type="button" (click)="getOutEdit()" class="secondary-button">Cancelar</button>
+            <button type="submit" (click)="acceptEdit($event)" [disabled]="!editFactoryForm.valid" class="primary-button">Editar</button>
         </div>
         
     </form>

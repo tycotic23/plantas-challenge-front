@@ -20,12 +20,11 @@ export interface SensorCreate{
 }
 
 export interface SensorUpdate{
-    type_id:number;
+    type:string;
     factory_id:number;
     readings?:number;
     medium_alerts?:number;
     red_alerts?:number;
-    disabled_sensors?:number;
 }
 
 

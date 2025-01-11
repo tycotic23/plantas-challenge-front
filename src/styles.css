@@ -226,6 +226,12 @@ hr{
     gap:0.5rem;
 }
 
+.dashboard-form--content--grid{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap:0.5rem;
+}
+
 .dashboard-form input,.dashboard-form select{
     width: 100%;
     border-radius: 5px;
@@ -310,3 +316,10 @@ hr{
     visibility: visible;
     opacity: 1;
   }
+
+  .flag{
+    border-radius: 50%;
+    width: 30px;
+    aspect-ratio: 1;
+    object-fit: cover;
+}

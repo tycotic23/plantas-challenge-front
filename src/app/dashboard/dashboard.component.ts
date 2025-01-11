@@ -5,7 +5,7 @@ import { TokenService } from '../services/token.service';
 import { SensorService } from '../services/sensor.service';
 import { FactoryService } from '../services/factory.service';
 import { MessagesService } from '../message.service';
-import { SensorDTO } from '../models/sensor';
+import { SensorDTO, SensorUpdate } from '../models/sensor';
 import { typeSensors } from '../configFactories';
 import { FactoryCreate, FactoryInfoDTO } from '../models/factory';
 import { CountryService } from '../services/country.service';
@@ -20,29 +20,80 @@ import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angula
   styleUrl: './dashboard.component.css'
 })
 export class DashboardComponent implements OnInit{
-  createMode:boolean=false;
+  createMode:number=0;
   sensorFlat?:SensorDTO;
   sensores?:any;
   types=typeSensors;
   factories:FactoryInfoDTO[]=[];
   countries:Country[]=[];
   createFactoryForm:FormGroup;
+  editFactoryForm:FormGroup;
+  editFactory?:FactoryInfoDTO;
   
   constructor(private countryService:CountryService,private messageService:MessagesService,private tokenService:TokenService,private sensorService:SensorService,private factoryService:FactoryService){
 
     this.createFactoryForm=new FormGroup({
-          name:new FormControl("",Validators.required),
-          country:new FormControl(Validators.required)
-        });
+      name:new FormControl("",Validators.required),
+      country:new FormControl(null,Validators.required)
+    });
+
+    this.editFactoryForm=new FormGroup({
+      name:new FormControl("",Validators.required),
+      country:new FormControl("",Validators.required),
+      type:new FormControl(null,Validators.required),
+      readings:new FormControl(0,Validators.required),
+      red_alerts:new FormControl(0,Validators.required),
+      medium_alerts:new FormControl(0,Validators.required)
+    });
+
+    this.editFactoryForm.controls['name'].disable();
+    this.editFactoryForm.controls['country'].disable();
+
+
+
+    
+  }
+
+  createFormReset():void{
+    this.createFactoryForm=new FormGroup({
+      name:new FormControl("",Validators.required),
+      country:new FormControl(null,Validators.required)
+    });
+  }
+
+  editFormReset():void{
+    this.editFactoryForm=new FormGroup({
+      name:new FormControl("",Validators.required),
+      country:new FormControl("",Validators.required),
+      type:new FormControl(null,Validators.required),
+      readings:new FormControl(0,Validators.required),
+      red_alerts:new FormControl(0,Validators.required),
+      medium_alerts:new FormControl(0,Validators.required)
+    });
+
   }
 
   getInCreate():void{
-    this.createMode=true;
+    this.createMode=1;
   }
 
   getOutCreate():void{
-    this.createMode=false;
-    this.createFactoryForm.reset();
+    this.createMode=0;
+    this.createFormReset();
+    
+  }
+
+  getInEdit(id:number):void{
+    this.createMode=2;
+    this.editFactory=this.factories.find(f=>f.id==id)??undefined;
+    this.editFactoryForm.controls['country'].setValue(this.editFactory?.country);
+    this.editFactoryForm.controls['name'].setValue(this.editFactory?.name);
+  }
+
+  getOutEdit():void{
+    this.createMode=0;
+    this.editFormReset();
+    this.editFactory=undefined;
   }
 
   acceptCreate(event:Event):void{
@@ -74,6 +125,65 @@ export class DashboardComponent implements OnInit{
         }
       });
     }
+
+  }
+
+  deleteFactory(id:number){
+    let token=this.tokenService.getToken();
+    if(token){
+      this.factoryService.deleteFactory(id,token).subscribe({
+        next:_=>{
+          //quitar la planta de la lista
+          this.factories=this.factories.filter(f=>f.id!=id);
+          //volver a cargar los demás datos
+          this.getSensorsGroupByType(token);
+          this.getAllSensorsFlat(token);
+        },
+        error:error=>{
+          this.messageService.setMessage(error.error);
+        }
+      });
+    }
+  }
+
+  acceptEdit(event:Event):void{
+    event.preventDefault();
+
+    if(this.editFactory){
+        //preparar peticion
+        let newSensor:SensorUpdate={
+          factory_id:this.editFactory.id,
+          type:this.editFactoryForm.value.type,
+          medium_alerts:this.editFactoryForm.value.medium_alerts,
+          readings:this.editFactoryForm.value.readings,
+          red_alerts:this.editFactoryForm.value.red_alerts
+        };
+
+        //enviar peticion
+        let token=this.tokenService.getToken();
+        if(token){
+          this.sensorService.createSensor(token,newSensor).subscribe({
+            next:data=>{
+              if(data.body && this.editFactory){
+                //volver a cargar los datos
+                this.getSensorsGroupByType(token);
+                this.getAllSensorsFlat(token);
+                this.getAllFactories(token);
+                //salir del modo de edición
+                this.getOutEdit();
+              }else{
+                this.messageService.setMessage("Hubo un error al crear la planta");
+              }
+              
+            },
+            error:error=>{
+              this.messageService.setMessage(error.error);
+            }
+          });
+        }
+
+    }
+    
   }
 
   ngOnInit(): void {
@@ -132,4 +242,5 @@ export class DashboardComponent implements OnInit{
       }
     });
   }
+
 }

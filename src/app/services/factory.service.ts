@@ -19,8 +19,24 @@ export class FactoryService {
       }).pipe();
   }
 
+  public getFactorySensors(token:string,id:number): Observable<HttpResponse<any>>{
+    return this.http.get<any>(configFactories.baseUrl+"/factory/"+id+"/sensors",{
+      observe:'response',
+      headers: new HttpHeaders({ 
+        'Authorization': `Bearer ${token}`})
+    }).pipe();
+}
+
   public createFactory(factory:FactoryCreate,token:string): Observable<HttpResponse<FactoryInfoDTO>>{
     return this.http.post<FactoryInfoDTO>(configFactories.baseUrl+"/factory",factory,{
+      observe:'response',
+      headers: new HttpHeaders({ 
+        'Authorization': `Bearer ${token}`})
+    }).pipe();
+  }
+
+  public deleteFactory(id:number,token:string): Observable<HttpResponse<any>>{
+    return this.http.delete<any>(configFactories.baseUrl+"/factory/"+id,{
       observe:'response',
       headers: new HttpHeaders({ 
         'Authorization': `Bearer ${token}`})

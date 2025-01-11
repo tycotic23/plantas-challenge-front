@@ -18,113 +18,116 @@
                     <th>Alertas rojas</th>
                     <th>Acciones</th>
                 </tr>
-                <tr>
+                <tr *ngFor="let factory of factories">
                     <td>
-                        <img src="" alt="">
-                        Argentina
+                        <img class="flag" [src]="factory.flag" [alt]="'Bandera de '+factory.country">
+                        {{factory.country}}
                     </td>
-                    <td>Quilmes</td>
-                    <td>300</td>
-                    <td>10</td>
-                    <td>2</td>
-                    <td><img class="icon" src="./assets/acciones.svg" alt=""></td>
+                    <td>{{factory.name}}</td>
+                    <td>{{factory.readings}}</td>
+                    <td>{{factory.medium_alerts}}</td>
+                    <td>{{factory.red_alerts}}</td>
+                    <td class="action-td"><button [ngClass]="{'primary-button':!selectedFactory || selectedFactory.id!=factory.id,'secondary-button':selectedFactory && selectedFactory.id==factory.id}" (click)="selectFactory(factory.id)">{{(selectedFactory && selectedFactory.id==factory.id)?"Deseleccionar":"Seleccionar"}}</button></td>
                 </tr>
             </table>
         </div>
         <!-- solo mostrar si hay alguna planta seleccionada -->
-         <h2 class="less-h2">Indicadores de PLANTA</h2>
-        <div class="readings">
-            <div class="dashboard-section dashboard-readings">
-                <div class="dashboard-section--info">
-                    <h3>Temperatura</h3>
-                    <div class="dashboard-readings">
-                        <p class="flex small-reading"><img class="icon-reading" src="./assets/ok-l.svg" alt="">100</p>
-                        <p class="flex small-reading"><img class="icon-reading" src="./assets/alertas-medias-l.svg" alt="">100</p>
-                        <p class="flex small-reading"><img class="icon-reading" src="./assets/alertas-rojas-l.svg" alt="">100</p>
+         @if (sensores) {
+            <h2 class="less-h2">Indicadores de PLANTA</h2>
+            <div class="readings">
+                <div class="dashboard-section dashboard-readings">
+                    <div class="dashboard-section--info">
+                        <h3>Temperatura</h3>
+                        <div class="dashboard-readings">
+                            <p class="flex small-reading"><img class="icon-reading" src="./assets/ok-l.svg" alt="">{{sensores[types.TEMPERATURA]?.readings??0}}</p>
+                            <p class="flex small-reading"><img class="icon-reading" src="./assets/alertas-medias-l.svg" alt="">{{sensores[types.TEMPERATURA]?.medium_alerts??0}}</p>
+                            <p class="flex small-reading"><img class="icon-reading" src="./assets/alertas-rojas-l.svg" alt="">{{sensores[types.TEMPERATURA]?.red_alerts??0}}</p>
+                        </div>
                     </div>
+                    <img class="dashboard-section--img" src="./assets/temperatura.svg" alt="">
                 </div>
-                <img class="dashboard-section--img" src="./assets/temperatura.svg" alt="">
-            </div>
-            <div class="dashboard-section dashboard-readings">
-                <div class="dashboard-section--info">
-                    <h3>Presión</h3>
-                    <div class="dashboard-readings">
-                        <p class="flex small-reading"><img class="icon-reading" src="./assets/ok-l.svg" alt="">100</p>
-                        <p class="flex small-reading"><img class="icon-reading" src="./assets/alertas-medias-l.svg" alt="">100</p>
-                        <p class="flex small-reading"><img class="icon-reading" src="./assets/alertas-rojas-l.svg" alt="">100</p>
+                <div class="dashboard-section dashboard-readings">
+                    <div class="dashboard-section--info">
+                        <h3>Presión</h3>
+                        <div class="dashboard-readings">
+                            <p class="flex small-reading"><img class="icon-reading" src="./assets/ok-l.svg" alt="">{{sensores[types.PRESION]?.readings??0}}</p>
+                            <p class="flex small-reading"><img class="icon-reading" src="./assets/alertas-medias-l.svg" alt="">{{sensores[types.PRESION]?.medium_alerts??0}}</p>
+                            <p class="flex small-reading"><img class="icon-reading" src="./assets/alertas-rojas-l.svg" alt="">{{sensores[types.PRESION]?.red_alerts??0}}</p>
+                        </div>
                     </div>
+                    <img class="dashboard-section--img" src="./assets/presion.svg" alt="">
                 </div>
-                <img class="dashboard-section--img" src="./assets/presion.svg" alt="">
-            </div>
-            <div class="dashboard-section dashboard-readings">
-                <div class="dashboard-section--info">
-                    <h3>Viento</h3>
-                    <div class="dashboard-readings">
-                        <p class="flex small-reading"><img class="icon-reading" src="./assets/ok-l.svg" alt="">100</p>
-                        <p class="flex small-reading"><img class="icon-reading" src="./assets/alertas-medias-l.svg" alt="">100</p>
-                        <p class="flex small-reading"><img class="icon-reading" src="./assets/alertas-rojas-l.svg" alt="">100</p>
+                <div class="dashboard-section dashboard-readings">
+                    <div class="dashboard-section--info">
+                        <h3>Viento</h3>
+                        <div class="dashboard-readings">
+                            <p class="flex small-reading"><img class="icon-reading" src="./assets/ok-l.svg" alt="">{{sensores[types.VIENTO]?.readings??0}}</p>
+                            <p class="flex small-reading"><img class="icon-reading" src="./assets/alertas-medias-l.svg" alt="">{{sensores[types.VIENTO]?.medium_alerts??0}}</p>
+                            <p class="flex small-reading"><img class="icon-reading" src="./assets/alertas-rojas-l.svg" alt="">{{sensores[types.VIENTO]?.red_alerts??0}}</p>
+                        </div>
                     </div>
+                    <img class="dashboard-section--img" src="./assets/viento.svg" alt="">
                 </div>
-                <img class="dashboard-section--img" src="./assets/viento.svg" alt="">
-            </div>
-            <div class="dashboard-section dashboard-readings">
-                <div class="dashboard-section--info">
-                    <h3>Niveles</h3>
-                    <div class="dashboard-readings">
-                        <p class="flex small-reading"><img class="icon-reading" src="./assets/ok-l.svg" alt="">100</p>
-                        <p class="flex small-reading"><img class="icon-reading" src="./assets/alertas-medias-l.svg" alt="">100</p>
-                        <p class="flex small-reading"><img class="icon-reading" src="./assets/alertas-rojas-l.svg" alt="">100</p>
+                <div class="dashboard-section dashboard-readings">
+                    <div class="dashboard-section--info">
+                        <h3>Niveles</h3>
+                        <div class="dashboard-readings">
+                            <p class="flex small-reading"><img class="icon-reading" src="./assets/ok-l.svg" alt="">{{sensores[types.NIVELES]?.readings??0}}</p>
+                            <p class="flex small-reading"><img class="icon-reading" src="./assets/alertas-medias-l.svg" alt="">{{sensores[types.NIVELES]?.medium_alerts??0}}</p>
+                            <p class="flex small-reading"><img class="icon-reading" src="./assets/alertas-rojas-l.svg" alt="">{{sensores[types.NIVELES]?.red_alerts??0}}</p>
+                        </div>
                     </div>
+                    <img class="dashboard-section--img" src="./assets/niveles.svg" alt="">
                 </div>
-                <img class="dashboard-section--img" src="./assets/niveles.svg" alt="">
             </div>
-        </div>
-        <div class="readings">
-            <div class="dashboard-section dashboard-readings">
-                <div class="dashboard-section--info">
-                    <h3>Energía</h3>
-                    <div class="dashboard-readings">
-                        <p class="flex small-reading"><img class="icon-reading" src="./assets/ok-l.svg" alt="">100</p>
-                        <p class="flex small-reading"><img class="icon-reading" src="./assets/alertas-medias-l.svg" alt="">100</p>
-                        <p class="flex small-reading"><img class="icon-reading" src="./assets/alertas-rojas-l.svg" alt="">100</p>
+            <div class="readings">
+                <div class="dashboard-section dashboard-readings">
+                    <div class="dashboard-section--info">
+                        <h3>Energía</h3>
+                        <div class="dashboard-readings">
+                            <p class="flex small-reading"><img class="icon-reading" src="./assets/ok-l.svg" alt="">{{sensores[types.ENERGIA]?.readings??0}}</p>
+                            <p class="flex small-reading"><img class="icon-reading" src="./assets/alertas-medias-l.svg" alt="">{{sensores[types.ENERGIA]?.medium_alerts??0}}</p>
+                            <p class="flex small-reading"><img class="icon-reading" src="./assets/alertas-rojas-l.svg" alt="">{{sensores[types.ENERGIA]?.red_alerts??0}}</p>
+                        </div>
                     </div>
+                    <img class="dashboard-section--img" src="./assets/energia.svg" alt="">
                 </div>
-                <img class="dashboard-section--img" src="./assets/energia.svg" alt="">
-            </div>
-            <div class="dashboard-section dashboard-readings">
-                <div class="dashboard-section--info">
-                    <h3>Tensión</h3>
-                    <div class="dashboard-readings">
-                        <p class="flex small-reading"><img class="icon-reading" src="./assets/ok-l.svg" alt="">100</p>
-                        <p class="flex small-reading"><img class="icon-reading" src="./assets/alertas-medias-l.svg" alt="">100</p>
-                        <p class="flex small-reading"><img class="icon-reading" src="./assets/alertas-rojas-l.svg" alt="">100</p>
+                <div class="dashboard-section dashboard-readings">
+                    <div class="dashboard-section--info">
+                        <h3>Tensión</h3>
+                        <div class="dashboard-readings">
+                            <p class="flex small-reading"><img class="icon-reading" src="./assets/ok-l.svg" alt="">{{sensores[types.TENSION]?.readings??0}}</p>
+                            <p class="flex small-reading"><img class="icon-reading" src="./assets/alertas-medias-l.svg" alt="">{{sensores[types.TENSION]?.medium_alerts??0}}</p>
+                            <p class="flex small-reading"><img class="icon-reading" src="./assets/alertas-rojas-l.svg" alt="">{{sensores[types.TENSION]?.red_alerts??0}}</p>
+                        </div>
                     </div>
+                    <img class="dashboard-section--img" src="./assets/tension.svg" alt="">
                 </div>
-                <img class="dashboard-section--img" src="./assets/tension.svg" alt="">
-            </div>
-            <div class="dashboard-section dashboard-readings">
-                <div class="dashboard-section--info">
-                    <h3>Monóxido de carbono</h3>
-                    <div class="dashboard-readings">
-                        <p class="flex small-reading"><img class="icon-reading" src="./assets/ok-l.svg" alt="">100</p>
-                        <p class="flex small-reading"><img class="icon-reading" src="./assets/alertas-medias-l.svg" alt="">100</p>
-                        <p class="flex small-reading"><img class="icon-reading" src="./assets/alertas-rojas-l.svg" alt="">100</p>
+                <div class="dashboard-section dashboard-readings">
+                    <div class="dashboard-section--info">
+                        <h3>Monóxido de carbono</h3>
+                        <div class="dashboard-readings">
+                            <p class="flex small-reading"><img class="icon-reading" src="./assets/ok-l.svg" alt="">{{sensores[types.CO2]?.readings??0}}</p>
+                            <p class="flex small-reading"><img class="icon-reading" src="./assets/alertas-medias-l.svg" alt="">{{sensores[types.CO2]?.medium_alerts??0}}</p>
+                            <p class="flex small-reading"><img class="icon-reading" src="./assets/alertas-rojas-l.svg" alt="">{{sensores[types.CO2]?.red_alerts??0}}</p>
+                        </div>
                     </div>
+                    <img class="dashboard-section--img" src="./assets/co2.svg" alt="">
                 </div>
-                <img class="dashboard-section--img" src="./assets/co2.svg" alt="">
-            </div>
-            <div class="dashboard-section dashboard-readings">
-                <div class="dashboard-section--info">
-                    <h3>Otros gases</h3>
-                    <div class="dashboard-readings">
-                        <p class="flex small-reading"><img class="icon-reading" src="./assets/ok-l.svg" alt="">100</p>
-                        <p class="flex small-reading"><img class="icon-reading" src="./assets/alertas-medias-l.svg" alt="">100</p>
-                        <p class="flex small-reading"><img class="icon-reading" src="./assets/alertas-rojas-l.svg" alt="">100</p>
+                <div class="dashboard-section dashboard-readings">
+                    <div class="dashboard-section--info">
+                        <h3>Otros gases</h3>
+                        <div class="dashboard-readings">
+                            <p class="flex small-reading"><img class="icon-reading" src="./assets/ok-l.svg" alt="">{{sensores[types.OTROS]?.readings??0}}</p>
+                            <p class="flex small-reading"><img class="icon-reading" src="./assets/alertas-medias-l.svg" alt="">{{sensores[types.OTROS]?.medium_alerts??0}}</p>
+                            <p class="flex small-reading"><img class="icon-reading" src="./assets/alertas-rojas-l.svg" alt="">{{sensores[types.OTROS]?.red_alerts??0}}</p>
+                        </div>
                     </div>
+                    <img class="dashboard-section--img" src="./assets/otros-gases.svg" alt="">
                 </div>
-                <img class="dashboard-section--img" src="./assets/otros-gases.svg" alt="">
             </div>
-        </div>
+         }
+         
     </div>
     
 </div>

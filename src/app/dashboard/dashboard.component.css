@@ -27,17 +27,30 @@
     width: 14px;
 }
 
-.flag{
-    border-radius: 50%;
-    width: 30px;
-    aspect-ratio: 1;
-    object-fit: cover;
-}
 
-.actions-menu,.actions-menu-container{
+
+.actions-menu-container,.actions-menu{
     display: flex;
     align-items: center;
     gap:1rem;
+}
+
+.actions-menu-container:hover .actions-menu{
+    opacity: 1;
+}
+
+.rotate{
+    transition: transform 0.3s ease-in-out;
+    cursor: pointer;
+}
+
+.actions-menu-container:hover .rotate{
+    transform: rotateZ(90deg);
+}
+
+.actions-menu{
+    opacity: 0;
+    transition: opacity 0.5s ease-in;
 }
 
 .actions-menu img{
