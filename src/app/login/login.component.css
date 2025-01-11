@@ -146,3 +146,31 @@ legend{
     margin-left: 1rem;
     line-height: 1;
 }
+
+@media (max-width: 1100px) {
+    .login-back{
+        padding: 3rem 3rem 4rem;
+    }
+
+   
+  }
+
+@media (max-width: 950px) {
+    .login-back{
+        display: none;
+    }
+
+    .login{
+        max-width: none;
+    }
+  }
+
+  @media (max-width: 950px) {
+
+    .login{
+       padding: 2rem;
+       margin: 0;
+       height: 100vh;
+       max-width: 100%;
+    }
+  }

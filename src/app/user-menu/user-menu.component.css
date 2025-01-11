@@ -146,3 +146,17 @@ legend{
     filter: brightness(0);
     cursor: pointer;
 }
+
+
+@media (max-width: 1200px) {
+    .menu-open{
+        width:700px;
+    }
+  }
+
+  @media (max-width: 750px) {
+    .menu-open{
+        width:100%;
+    }
+  }
+  

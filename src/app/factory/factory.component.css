@@ -12,6 +12,8 @@
     flex-grow: 1;
     min-height: 100vh;
     padding: 1.5rem;
+    max-width: 100%;
+    overflow: hidden;
 }
 
 .shadow{
@@ -71,3 +73,12 @@ button.dashboard-readings:hover{
  .factory-title p{
     font-weight: 600;
  }
+
+ @media (max-width: 782px) {
+  
+    .table-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 1rem;
+    }
+  }

@@ -19,7 +19,7 @@
             </form>
             <hr>
             <table>
-                <tr>
+                <tr class="oculte-850">
                     <th>País</th>
                     <th>Nombre de la planta</th>
                     <th>Lecturas</th>
@@ -33,9 +33,9 @@
                         {{factory.country}}
                     </td>
                     <td>{{factory.name}}</td>
-                    <td>{{factory.readings}}</td>
-                    <td>{{factory.medium_alerts}}</td>
-                    <td>{{factory.red_alerts}}</td>
+                    <td><img class="icon view-850" src="./assets/ok-l.svg">{{factory.readings}}</td>
+                    <td><img class="icon view-850" src="./assets/alertas-medias-l.svg">{{factory.medium_alerts}}</td>
+                    <td><img class="icon view-850" src="./assets/alertas-rojas-l.svg">{{factory.red_alerts}}</td>
                     <td class="action-td"><button [ngClass]="{'primary-button':!selectedFactory || selectedFactory.id!=factory.id,'secondary-button':selectedFactory && selectedFactory.id==factory.id}" (click)="selectFactory(factory.id)">{{(selectedFactory && selectedFactory.id==factory.id)?"Deseleccionar":"Seleccionar"}}</button></td>
                 </tr>
             </table>
@@ -144,4 +144,4 @@
     </div>
     
 </div>
-
+<app-user-menu></app-user-menu>

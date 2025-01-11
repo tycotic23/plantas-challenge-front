@@ -9,12 +9,13 @@ import { Country } from '../models/country';
 import { FactoryInfoDTO } from '../models/factory';
 import { CommonModule } from '@angular/common';
 import { typeSensors } from '../configFactories';
-import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
+import { UserMenuComponent } from '../user-menu/user-menu.component';
 
 @Component({
   selector: 'app-factory',
   standalone: true,
-  imports: [ActionBarComponent,CommonModule,ReactiveFormsModule],
+  imports: [ActionBarComponent,CommonModule,ReactiveFormsModule,UserMenuComponent],
   templateUrl: './factory.component.html',
   styleUrl: './factory.component.css'
 })

@@ -91,7 +91,7 @@ span{
 .readings{
     gap:1rem;
     display: grid;
-    grid-template-columns: repeat(4,4fr);
+    grid-template-columns: repeat(4,1fr);
 }
 
 h1.dashboard-title{
@@ -147,6 +147,7 @@ h1.dashboard-title{
 
 .table-header{
     display: flex;
+    flex-wrap: wrap;
     align-items: center;
     gap:2rem;
 }
@@ -361,3 +362,46 @@ hr{
     gap:0.5rem;
     align-items: center;
 }
+
+.view-850{
+    display: none;
+}
+
+@media (max-width: 1300px) {
+    .readings{
+        grid-template-columns: repeat(2,1fr);
+    }
+  }
+
+
+  @media (max-width: 850px) {
+    .oculte-850{
+        display: none;
+    }
+
+    .view-850{
+        display: inline-block;
+    }
+
+    .dashboard-form--content--grid{
+        grid-template-columns: 1fr;
+    }
+  }
+
+  @media (max-width: 782px) {
+    table td {
+        padding: 1rem 0;
+    }
+
+    .primary-button {
+        padding: 0.3rem 0.2rem;
+        font-size: 10px;
+    }
+  }
+
+  
+@media (max-width: 600px) {
+    .readings{
+        grid-template-columns: repeat(1,1fr);
+    }
+  }

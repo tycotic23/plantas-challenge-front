@@ -5,11 +5,12 @@ import { MessagesService } from '../message.service';
 import { TokenService } from '../services/token.service';
 import { RecordSensorsService } from '../services/record-sensors.service';
 import { Record } from '../models/record';
+import { UserMenuComponent } from '../user-menu/user-menu.component';
 
 @Component({
   selector: 'app-record-sensors',
   standalone: true,
-  imports: [ActionBarComponent,CommonModule],
+  imports: [ActionBarComponent,CommonModule,UserMenuComponent],
   templateUrl: './record-sensors.component.html',
   styleUrl: './record-sensors.component.css'
 })

@@ -5,11 +5,12 @@ import { TokenService } from '../services/token.service';
 import { MessagesService } from '../message.service';
 import { Record } from '../models/record';
 import { CommonModule } from '@angular/common';
+import { UserMenuComponent } from '../user-menu/user-menu.component';
 
 @Component({
   selector: 'app-record-factories',
   standalone: true,
-  imports: [ActionBarComponent,CommonModule],
+  imports: [ActionBarComponent,CommonModule,UserMenuComponent],
   templateUrl: './record-factories.component.html',
   styleUrl: './record-factories.component.css'
 })
