@@ -1,6 +1,26 @@
 <ul>
     <li><img class="icon" src="../../assets/idioma.svg" alt=""></li>
-    <li><img class="icon" src="../../assets/ajustes.svg" alt=""></li>
+    <li><button class="no-button" (click)="openMenu=true"><img class="icon" src="../../assets/ajustes.svg" alt=""></button></li>
     <li><img class="icon" src="../../assets/notificaciones.svg" alt=""></li>
     <li>{{username}}</li>
 </ul>
+<div class="configuration-menu shadow" [ngClass]="{'menu-open':openMenu}">
+    <h2>Configuración</h2>
+    <h3>Cambiar email</h3>
+    <form [formGroup]="changeEmailForm">
+        <label class="legend" for="email">
+            <fieldset>
+                <legend>Nuevo email</legend>
+                <input type="email" id="email" formControlName="email" required>
+            </fieldset>
+        </label>
+        <p class="error" *ngIf="changeEmailForm.get('email')?.errors && (changeEmailForm.get('email')?.dirty || changeEmailForm.get('email')?.touched)">Email inválido</p>
+        <label class="input-container" for="password"><input required placeholder="Contraseña" [type]="(seePassword)?'text':'password'" id="password" formControlName="password"><button (click)="tooglePassword()" class="input-icon"><img  src="./assets/view.svg" alt=""></button></label>
+        <p class="error" *ngIf="changeEmailForm.get('password')?.errors && (changeEmailForm.get('password')?.dirty || changeEmailForm.get('password')?.touched)">Contraseña inválida</p>
+        <div class="actions-form">
+            <button type="submit" class="login-button" [disabled]="!changeEmailForm.valid || msg" (click)="changeEmail($event)">Guardar</button>
+        </div>
+        <p class="error">{{msg}}</p>
+    </form>
+    <button (click)="openMenu=false" class="secondary-button float-button">Cerrar</button>
+</div>

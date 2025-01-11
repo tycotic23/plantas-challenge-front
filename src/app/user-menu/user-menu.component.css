@@ -17,3 +17,132 @@ ul{
     width: 20px;
     vertical-align: middle;
 }
+
+.configuration-menu{
+    position: fixed;
+    top:0;
+    right: 0;
+
+    background-color: white;
+    border-radius: 32px 0 0 32px;
+    
+    max-width: 600px;
+
+    
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap:1rem;
+    width: 0vw;
+    height: 100%;
+    overflow: hidden;
+
+    transition: all 0.4s ease-in-out;
+}
+
+.menu-open{
+    min-width: 45vw;
+    width: 45vw;
+    padding: 7%;
+    transition: all 0.4s ease-in-out;
+}
+
+.float-button{
+    position: absolute;
+    top: 2rem;
+    right: 2rem;
+}
+
+.shadow{
+    box-shadow: -1px 1px 11px 1px rgb(189 189 189 / 45%);
+    z-index: 1;
+}
+
+form{
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    gap:1rem;
+}
+
+input{
+    width: 100%;
+    border-radius: 12px;
+    border: none;
+    border: 1px solid #DCDBDD;
+    padding: 0.5rem 1rem;
+}
+
+h2{
+    font-weight: 600;
+    font-size: 36.5px;
+    line-height: 36.48px;
+}
+
+h3{
+    font-weight: 500;
+    font-size: 25px;
+}
+
+.input-icon{
+    position: absolute;
+    width: 20px;
+    top:50%;
+    transform: translateY(-50%);
+    right: 1rem;
+}
+
+button.input-icon{
+    background: none;
+    border: none;
+}
+
+button.input-icon:hover{
+    cursor: pointer;
+}
+
+.legend{
+    color: #84818A;
+    font-size: 12px;
+
+}
+
+fieldset{
+    width: 100%;
+    border-radius: 12px;
+    border: none;
+    border: 1px solid #DCDBDD;
+    padding: 0;
+    background-color: white;
+}
+
+fieldset input{
+    border: none;
+}
+
+
+
+legend{
+    margin-left: 1rem;
+    line-height: 0.6;
+}
+
+.input-container{
+    position: relative;
+}
+
+.actions-form{
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+.no-button{
+    background: none;
+    border: none;
+}
+
+.no-button:hover{
+    filter: brightness(0);
+    cursor: pointer;
+}

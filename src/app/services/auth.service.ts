@@ -26,4 +26,12 @@ export class AuthService {
         'Content-Type': 'application/json'})
     }).pipe();
   }
+
+  public changeEmail(loginUser:UserLogin,token:string): Observable<HttpResponse<any>>{
+    return this.http.patch<any>(configFactories.baseUrl+"/user/email",loginUser,{
+      observe:'response',
+      headers: new HttpHeaders({ 
+        'Content-Type': 'application/json','Authorization': `Bearer ${token}`})
+    }).pipe();
+  }
 }

@@ -46,11 +46,6 @@ registerForm:FormGroup;
 
   register(event:Event):void{
     event.preventDefault();
-    console.log({
-      username:this.registerForm.value.username,
-      email:this.registerForm.value.email,
-      password:this.registerForm.value.password
-    })
     this.authService.register({
       username:this.registerForm.value.username,
       email:this.registerForm.value.email,
