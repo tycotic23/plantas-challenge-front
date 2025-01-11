@@ -25,3 +25,8 @@ button{
 button:hover{
     cursor: pointer;
 }
+
+a:active,a.active{
+    filter: brightness(0);
+}
+

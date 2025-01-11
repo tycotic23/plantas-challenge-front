@@ -76,7 +76,7 @@ export class FactoryComponent implements OnInit{
   }
 
   btnToggleSensor(type:typeSensors):void{
-    if(this.sensores[type].disabled_sensors==1){
+    if(this.sensores[type].disabled==1){
       this.enableSensor(type);
     }else{
       this.disableSensor(type);
@@ -89,7 +89,7 @@ export class FactoryComponent implements OnInit{
       this.sensorService.disableSensor(token,this.selectedFactory.id,type).subscribe({
         next:data=>{
           this.messageService.setMessage("Sensor deshabilitado");
-          this.sensores[type].disabled_sensors=1;
+          this.sensores[type].disabled=1;
         },
         error:error=>{
           this.messageService.setMessage("Error al deshabilitar el sensor");
@@ -104,7 +104,7 @@ export class FactoryComponent implements OnInit{
       this.sensorService.enableSensor(token,this.selectedFactory.id,type).subscribe({
         next:data=>{
           this.messageService.setMessage("Sensor habilitado nuevamente");
-          this.sensores[type].disabled_sensors=0;
+          this.sensores[type].disabled=0;
         },
         error:error=>{
           this.messageService.setMessage("Error al habilitar el sensor");

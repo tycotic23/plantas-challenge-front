@@ -27,9 +27,7 @@
     width: 14px;
 }
 
-.less-h2{
-    font-weight: 400;
-}
+
 
 .action-td{
     width: 20%;
@@ -55,4 +53,21 @@ button.dashboard-readings:hover{
 
  button.dashboard-readings.disabled{
     filter:brightness(0.7);
+ }
+
+ .less-h2{
+    font-weight: 500;
+    font-size: 16px;
+}
+
+ .factory-title{
+    display: flex;
+    align-items: center;
+    color: var(--primary);
+    font-size: 12px;
+    gap:0.5rem;
+ }
+
+ .factory-title p{
+    font-weight: 600;
  }

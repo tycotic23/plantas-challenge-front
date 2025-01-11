@@ -11,11 +11,12 @@ import { FactoryCreate, FactoryInfoDTO } from '../models/factory';
 import { CountryService } from '../services/country.service';
 import { Country } from '../models/country';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import { UserMenuComponent } from '../user-menu/user-menu.component';
 
 @Component({
   selector: 'app-dashboard',
   standalone: true,
-  imports: [ActionBarComponent,CommonModule,ReactiveFormsModule],
+  imports: [ActionBarComponent,CommonModule,ReactiveFormsModule,UserMenuComponent],
   templateUrl: './dashboard.component.html',
   styleUrl: './dashboard.component.css'
 })
@@ -114,6 +115,7 @@ export class DashboardComponent implements OnInit{
         next:data=>{
           if(data.body){
             this.factories.push(data.body);
+            this.messageService.setMessage("Planta creada con éxito");
             this.getOutCreate();
           }else{
             this.messageService.setMessage("Hubo un error al crear la planta");
@@ -135,6 +137,7 @@ export class DashboardComponent implements OnInit{
         next:_=>{
           //quitar la planta de la lista
           this.factories=this.factories.filter(f=>f.id!=id);
+          this.messageService.setMessage("Planta eliminada");
           //volver a cargar los demás datos
           this.getSensorsGroupByType(token);
           this.getAllSensorsFlat(token);
@@ -169,6 +172,7 @@ export class DashboardComponent implements OnInit{
                 this.getSensorsGroupByType(token);
                 this.getAllSensorsFlat(token);
                 this.getAllFactories(token);
+                this.messageService.setMessage("Planta modificada con éxito");
                 //salir del modo de edición
                 this.getOutEdit();
               }else{

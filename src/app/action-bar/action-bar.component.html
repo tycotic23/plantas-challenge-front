@@ -1,8 +1,8 @@
 <nav>
     <img class="icon-logo" src="./assets/logo.svg" alt="">
-    <a class="icon tooltip" routerLink="/dashboard"><img src="./assets/dashboard.svg" alt=""><span class="tooltiptext">Monitoreo global</span></a>
-    <a class="icon tooltip" routerLink="/factory"><img src="./assets/monitoreo-planta.svg" alt=""><span class="tooltiptext">Monitoreo por planta</span></a>
-    <a class="icon tooltip" routerLink="/records-sensors"><img src="./assets/hist-sensores.svg" alt=""><span class="tooltiptext">Ver historial de sensores</span></a>
-    <a class="icon tooltip" routerLink="/records-factories"><img src="./assets/hist-plantas.svg" alt=""><span class="tooltiptext">Ver historial de plantas</span></a>
+    <a class="icon tooltip" routerLinkActive="active" routerLink="/dashboard"><img src="./assets/dashboard.svg" alt=""><span class="tooltiptext">Monitoreo global</span></a>
+    <a class="icon tooltip" [routerLinkActive]="['active']" routerLink="/factory"><img src="./assets/monitoreo-planta.svg" alt=""><span class="tooltiptext">Monitoreo por planta</span></a>
+    <a class="icon tooltip" routerLinkActive="active" routerLink="/records-sensors"><img src="./assets/hist-sensores.svg" alt=""><span class="tooltiptext">Ver historial de sensores</span></a>
+    <a class="icon tooltip" routerLinkActive="active" routerLink="/records-factories"><img src="./assets/hist-plantas.svg" alt=""><span class="tooltiptext">Ver historial de plantas</span></a>
     <button class="icon tooltip" (click)="logOut()"><img src="./assets/cerrar-sesion.svg" alt=""><span class="tooltiptext">Cerrar sesión</span></button>
 </nav>

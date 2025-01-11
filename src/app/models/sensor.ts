@@ -6,7 +6,7 @@ export interface Sensor{
     readings:number;
     medium_alerts:number;
     red_alerts:number;
-    disabled_sensors:number;
+    disabled:number;
 }
 
 
@@ -16,7 +16,7 @@ export interface SensorCreate{
     readings:number;
     medium_alerts:number;
     red_alerts:number;
-    disabled_sensors:number;
+    disabled:number;
 }
 
 export interface SensorUpdate{
@@ -34,5 +34,5 @@ export interface SensorDTO{
     readings:number;
     medium_alerts:number;
     red_alerts:number;
-    disabled_sensors:number;
+    disabled:number;
 }

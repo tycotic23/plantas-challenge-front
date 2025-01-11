@@ -27,7 +27,7 @@
             <div class="dashboard-section dashboard-readings">
                 <div class="dashboard-section--info">
                     <h3>Sensores deshabilitados</h3>
-                    <p>{{sensorFlat?.disabled_sensors??0}}</p>
+                    <p>{{sensorFlat?.disabled??0}}</p>
                 </div>
                 <img class="dashboard-section--img" src="./assets/deshabilitados.svg" alt="">
             </div>
@@ -49,8 +49,10 @@
                 </tr>
                 <tr *ngFor="let factory of factories;let i=index">
                     <td>
-                        <img class="flag" [src]="factory.flag" [alt]="'Bandera de '+factory.country">
-                        {{factory.country}}
+                        <div class="td-flex">
+                            <img class="flag" [src]="factory.flag" [alt]="'Bandera de '+factory.country">
+                            {{factory.country}}
+                        </div>
                     </td>
                     <td>{{factory.name}}</td>
                     <td>{{factory.readings}}</td>
@@ -115,8 +117,6 @@
                 </div>
                 <img class="dashboard-section--img" src="./assets/niveles.svg" alt="">
             </div>
-        </div>
-        <div *ngIf="sensores" class="readings">
             <div class="dashboard-section dashboard-readings">
                 <div class="dashboard-section--info">
                     <h3>Energía</h3>
@@ -214,3 +214,4 @@
         
     </form>
 </div>
+<app-user-menu></app-user-menu>

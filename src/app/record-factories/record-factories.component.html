@@ -7,14 +7,14 @@
                 <h2>Plantas</h2>
             </div>
             <hr>
-            <table>
+            <table class="table-records">
                 <tr>
                     <th>Acción</th>
                     <th>Fecha</th>
                 </tr>
-                <tr>
-                    <td>Crear planta: Ana</td>
-                    <td>45/34/23</td>
+                <tr *ngFor="let record of recordFactories">
+                    <td>{{record.action}}</td>
+                    <td>{{record.date|date:"dd/MM/yy - hh:mm:ss"}} hs</td>
                 </tr>
             </table>
         </div>
