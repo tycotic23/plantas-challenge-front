@@ -33,3 +33,26 @@
     aspect-ratio: 1;
     object-fit: cover;
 }
+
+.actions-menu,.actions-menu-container{
+    display: flex;
+    align-items: center;
+    gap:1rem;
+}
+
+.actions-menu img{
+    width: 1.2rem;
+}
+
+.actions-menu button{
+    background: none;
+    border:none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.actions-menu button:hover{
+    filter:brightness(1.4);
+    cursor: pointer;
+}

@@ -56,7 +56,13 @@
                     <td>{{factory.readings}}</td>
                     <td>{{factory.medium_alerts}}</td>
                     <td>{{factory.red_alerts}}</td>
-                    <td><img class="icon" src="./assets/acciones.svg" alt=""></td>
+                    <td class="actions-menu-container">
+                        <img class="icon" src="./assets/acciones.svg" alt="">
+                        <div class="actions-menu">
+                            <button class="tooltip"><img src="./assets/edit.svg" alt=""><span class="tooltiptextup">Editar planta</span></button>
+                            <button class="tooltip"><img src="./assets/delete.svg" alt=""><span class="tooltiptextup">Eliminar planta</span></button>
+                        </div>
+                    </td>
                 </tr>
             </table>
         </div>
