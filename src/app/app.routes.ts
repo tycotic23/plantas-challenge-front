@@ -5,9 +5,11 @@ import { FactoryComponent } from './factory/factory.component';
 import { RecordSensorsComponent } from './record-sensors/record-sensors.component';
 import { RecordFactoriesComponent } from './record-factories/record-factories.component';
 import { GuardService } from './services/guard.service';
+import { RegisterComponent } from './register/register.component';
 
 export const routes: Routes = [
     {path:"login",component:LoginComponent},
+    {path:"register",component:RegisterComponent},
     
     {path:"dashboard",component:DashboardComponent,canActivate:[GuardService],data:{denied:['/login']}},
     {path:"factory",component:FactoryComponent,canActivate:[GuardService],data:{denied:['/login']}},

@@ -1,0 +1,55 @@
+<div class="content">
+    <div class="login-back">
+        <h1>Registrarse</h1>
+        <p>¡Bienvenido! Estamos encantados de que quieras unirte a nuestra plataforma. Regístrate y comienza a disfrutar de todas las ventajas que ofrecemos. No pierdas la oportunidad de ser parte de nuestra comunidad.</p>
+        <div class="login-back--item">
+            <img class="icon" src="./assets/monitoreo-integral.svg" alt="">
+            <div>
+                <h4>Monitoreo integral</h4>
+                <p>Administra, monitorea mutiples plantas de forma centralizada</p>
+            </div>
+        </div>
+        <div class="login-back--item">
+            <img class="icon" src="./assets/notificaciones-icon.svg" alt="">
+            <div>
+                <h4>Notificaciones en tiempo real</h4>
+                <p>Recibi notificaciones en tiempo real sobre las mediciones</p>
+            </div>
+        </div>
+    </div>
+    <div class="login">
+        <h2>Portal de monitoreo</h2>
+        <h3>Registrarse</h3>
+        <form [formGroup]="registerForm">
+            <label class="legend" for="username">
+                <fieldset>
+                    <legend>Usuario</legend>
+                    <input type="text" id="username" formControlName="username" required>
+                </fieldset>
+            </label>
+            <p class="error" *ngIf="registerForm.get('username')?.errors && (registerForm.get('username')?.dirty || registerForm.get('username')?.touched)">Nombre de usuario inválido</p>
+            <label class="legend" for="email">
+                <fieldset>
+                    <legend>Email</legend>
+                    <input type="email" id="email" formControlName="email" required>
+                </fieldset>
+            </label>
+            <p class="error" *ngIf="registerForm.get('email')?.errors && (registerForm.get('email')?.dirty || registerForm.get('email')?.touched)">Email inválido</p>
+            <label class="input-container" for="password"><input required placeholder="Contraseña" [type]="(seePassword)?'text':'password'" id="password" formControlName="password"><button (click)="tooglePassword()" class="input-icon"><img  src="./assets/view.svg" alt=""></button></label>
+            <p class="error" *ngIf="registerForm.get('password')?.errors && (registerForm.get('password')?.dirty || registerForm.get('password')?.touched)">Contraseña inválida</p>
+            <label class="input-container" for="checkpassword"><input required placeholder="Repetir contraseña" [type]="(seeCheckPassword)?'text':'password'" id="checkpassword" formControlName="checkpassword"><button (click)="toogleCheckPassword()" class="input-icon"><img  src="./assets/view.svg" alt=""></button></label>
+            <p class="error" *ngIf="registerForm.value.checkpassword!=registerForm.value.password && ((registerForm.get('checkpassword')?.dirty || registerForm.get('checkpassword')?.touched))">No coinciden las contraseñas</p>
+            <div class="actions-form">
+                <ul class="p-small">
+                    <li>-Al menos 8 caracteres</li>
+                    <li>-Al menos 1 número</li>
+                    <li>-Al menos 1 caracter especial</li>
+                </ul>
+                <button type="submit" class="login-button" [disabled]="!registerForm.valid || msg" (click)="register($event)">Registrarse</button>
+            </div>
+            <p class="error">{{msg}}</p>
+        </form>
+        <p class="p-small">Protegido por reCAPTCHA y sujeto a la <span>Política de Privacidad</span> y <span>Condiciones.</span></p>
+        <p>¿ya tienes una cuenta? <span><a routerLink="/login">Iniciar sesión</a></span></p>
+    </div>
+</div>

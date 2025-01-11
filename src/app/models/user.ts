@@ -1,12 +1,16 @@
 export interface User{
     id:number;
-    name:string;
-    password:string;
-    avatar:string;
+    username:string;
     email:string;
 }
 
 export interface UserLogin{
     email:string;
     password:string;
+}
+
+export interface UserRegister{
+    email:string;
+    password:string;
+    username:string;
 }

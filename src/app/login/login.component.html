@@ -21,8 +21,12 @@
         <h2>Portal de monitoreo</h2>
         <h3>Iniciar sesión</h3>
         <form [formGroup]="loginForm">
-            <label for="email"><input type="email" id="email" formControlName="email" required></label>
-            <p class="error" *ngIf="loginForm.get('email')?.errors && (loginForm.get('email')?.dirty || loginForm.get('email')?.touched)">Email inválido</p>
+            <label class="legend" for="email">
+                <fieldset>
+                    <legend>Email</legend>
+                    <input type="email" id="email" formControlName="email" required>
+                </fieldset>
+            </label>
             <label class="input-container" for="password"><input required placeholder="Contraseña" [type]="(seePassword)?'text':'password'" id="password" formControlName="password"><button (click)="tooglePassword()" class="input-icon"><img  src="./assets/view.svg" alt=""></button></label>
             <p class="error" *ngIf="loginForm.get('password')?.errors && (loginForm.get('password')?.dirty || loginForm.get('password')?.touched)">Falta contraseña</p>
             <div class="actions-form">
@@ -32,5 +36,6 @@
             <p class="error">{{msg}}</p>
         </form>
         <p class="p-small">Protegido por reCAPTCHA y sujeto a la <span>Política de Privacidad</span> y <span>Condiciones.</span></p>
+        <p>¿No tienes una cuenta? <span><a routerLink="/register"> Registrarse</a></span></p>
     </div>
 </div>

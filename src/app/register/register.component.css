@@ -144,5 +144,9 @@ fieldset input{
 
 legend{
     margin-left: 1rem;
-    line-height: 1;
+    line-height: 0.6;
+}
+
+ul{
+    list-style: none;
 }
