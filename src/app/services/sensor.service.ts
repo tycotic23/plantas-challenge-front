@@ -34,4 +34,20 @@ export class SensorService {
         'Authorization': `Bearer ${token}`})
     }).pipe();
   }
+
+  public disableSensor(token:string,factory_id:number,type:string): Observable<HttpResponse<SensorDTO>>{
+    return this.http.patch<SensorDTO>(configFactories.baseUrl+"/sensor/disable",{factory_id:factory_id,type:type},{
+      observe:'response',
+      headers: new HttpHeaders({ 
+        'Authorization': `Bearer ${token}`})
+    }).pipe();
+  }
+
+  public enableSensor(token:string,factory_id:number,type:string): Observable<HttpResponse<SensorDTO>>{
+    return this.http.patch<SensorDTO>(configFactories.baseUrl+"/sensor/enable",{factory_id:factory_id,type:type},{
+      observe:'response',
+      headers: new HttpHeaders({ 
+        'Authorization': `Bearer ${token}`})
+    }).pipe();
+  }
 }

@@ -9,12 +9,12 @@ import { Country } from '../models/country';
 import { FactoryInfoDTO } from '../models/factory';
 import { CommonModule } from '@angular/common';
 import { typeSensors } from '../configFactories';
-import { Sensor } from '../models/sensor';
+import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-factory',
   standalone: true,
-  imports: [ActionBarComponent,CommonModule],
+  imports: [ActionBarComponent,CommonModule,ReactiveFormsModule],
   templateUrl: './factory.component.html',
   styleUrl: './factory.component.css'
 })
@@ -25,8 +25,15 @@ export class FactoryComponent implements OnInit{
     selectedFactory?:FactoryInfoDTO;
     types=typeSensors;
     sensores?:any;
+    searchForm:FormGroup;
+    filteredFactories:FactoryInfoDTO[]=[];
     
-    constructor(private countryService:CountryService,private messageService:MessagesService,private tokenService:TokenService,private sensorService:SensorService,private factoryService:FactoryService){}
+    constructor(private countryService:CountryService,private messageService:MessagesService,private tokenService:TokenService,private sensorService:SensorService,private factoryService:FactoryService){
+      this.searchForm=new FormGroup({
+            name:new FormControl(""),
+            country:new FormControl(null)
+          });
+    }
 
   ngOnInit(): void {
     let token=this.tokenService.getToken();
@@ -37,16 +44,73 @@ export class FactoryComponent implements OnInit{
     }
   }
 
+  listenerEscape(event:KeyboardEvent){
+    if(event.key=="Escape"){
+      this.resetFilter();
+    }
+  }
+
+  resetFilter():void{
+    this.filteredFactories=this.factories;
+    this.searchForm.reset();
+  }
+
+  search(event:Event):void{
+    event.preventDefault();
+    this.filteredFactories=this.factories.filter(f=>{
+      return (!this.searchForm.value.name || f.name.toLowerCase().includes(this.searchForm.value.name.toLowerCase()))
+      && (!this.searchForm.value.country || this.searchForm.value.country=="null"  || f.country.toLowerCase().includes(this.searchForm.value.country.toLowerCase()))
+    });
+  }
 
   getAllFactories(token:string):void{
     this.factoryService.getAllFactories(token).subscribe({
       next:data=>{
         this.factories=data.body??[];
+        this.filteredFactories=this.factories;
       },
       error:error=>{
         this.messageService.setMessage("Error al traer las plantas");
       }
     });
+  }
+
+  btnToggleSensor(type:typeSensors):void{
+    if(this.sensores[type].disabled_sensors==1){
+      this.enableSensor(type);
+    }else{
+      this.disableSensor(type);
+    }
+  }
+
+  disableSensor(type:typeSensors):void{
+    let token=this.tokenService.getToken();
+    if(token && this.selectedFactory){
+      this.sensorService.disableSensor(token,this.selectedFactory.id,type).subscribe({
+        next:data=>{
+          this.messageService.setMessage("Sensor deshabilitado");
+          this.sensores[type].disabled_sensors=1;
+        },
+        error:error=>{
+          this.messageService.setMessage("Error al deshabilitar el sensor");
+        }
+      });
+    }
+  }
+
+  enableSensor(type:typeSensors):void{
+    let token=this.tokenService.getToken();
+    if(token && this.selectedFactory){
+      this.sensorService.enableSensor(token,this.selectedFactory.id,type).subscribe({
+        next:data=>{
+          this.messageService.setMessage("Sensor habilitado nuevamente");
+          this.sensores[type].disabled_sensors=0;
+        },
+        error:error=>{
+          this.messageService.setMessage("Error al habilitar el sensor");
+        }
+      });
+    }
   }
 
   getAllCountries():void{

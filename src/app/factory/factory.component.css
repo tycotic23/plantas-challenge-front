@@ -39,3 +39,20 @@
     border: none;
     outline: 2px solid var(--primary);
 }
+
+.dashboard-readings h3{
+    text-align: left;
+}
+
+button.dashboard-readings{
+   border: none;
+}
+
+button.dashboard-readings:hover{
+    cursor: pointer;
+    outline: 2px solid var(--primary);
+ }
+
+ button.dashboard-readings.disabled{
+    filter:brightness(0.7);
+ }

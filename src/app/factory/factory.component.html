@@ -3,11 +3,20 @@
     <div class="content">
         <h1 class="dashboard-title">Monitoreo por planta</h1>
         <div class="dashboard-section dashboard-table">
-            <div class="table-header">
+            <form (keydown)="listenerEscape($event)" [formGroup]="searchForm" class="table-header">
                 <h2>Buscar planta</h2>
-                <input type="text">
-                <button class="table-header--button">Buscar</button>
-            </div>
+                <label for="name">Nombre planta</label>
+                <input (change)="search($event)" type="text" placeholder="Ingrese nombre" id="name" formControlName="name">
+                <label for="country">País</label>
+                <select (change)="search($event)" type="text" placeholder="Seleccione país" id="country" formControlName="country">
+                    <option [value]="null">Elegir opción</option>
+                    <option *ngFor="let country of countries;let i=index" [value]="i">
+                        {{country.name.common}}
+                    </option>
+                </select>
+                <button type="submit" (click)="search($event)" class="table-header--button">Buscar</button>
+                <button type="reset" (click)="resetFilter()" class="table-header--button">Borrar filtros</button>
+            </form>
             <hr>
             <table>
                 <tr>
@@ -18,7 +27,7 @@
                     <th>Alertas rojas</th>
                     <th>Acciones</th>
                 </tr>
-                <tr *ngFor="let factory of factories">
+                <tr *ngFor="let factory of filteredFactories">
                     <td>
                         <img class="flag" [src]="factory.flag" [alt]="'Bandera de '+factory.country">
                         {{factory.country}}
@@ -33,9 +42,9 @@
         </div>
         <!-- solo mostrar si hay alguna planta seleccionada -->
          @if (sensores) {
-            <h2 class="less-h2">Indicadores de PLANTA</h2>
+            <h2 class="less-h2">Indicadores de PLANTA <span> | Haga click para habilitar / deshabilitar</span></h2>
             <div class="readings">
-                <div class="dashboard-section dashboard-readings">
+                <button *ngIf="sensores[types.TEMPERATURA]" (click)="btnToggleSensor(types.TEMPERATURA)"  class="dashboard-section dashboard-readings" [ngClass]="{'disabled':sensores[types.TEMPERATURA].disabled_sensors==1}">
                     <div class="dashboard-section--info">
                         <h3>Temperatura</h3>
                         <div class="dashboard-readings">
@@ -45,8 +54,8 @@
                         </div>
                     </div>
                     <img class="dashboard-section--img" src="./assets/temperatura.svg" alt="">
-                </div>
-                <div class="dashboard-section dashboard-readings">
+                </button>
+                <button *ngIf="sensores[types.PRESION]" (click)="btnToggleSensor(types.PRESION)" [ngClass]="{'disabled':sensores[types.PRESION].disabled_sensors==1}" class="dashboard-section dashboard-readings">
                     <div class="dashboard-section--info">
                         <h3>Presión</h3>
                         <div class="dashboard-readings">
@@ -56,8 +65,8 @@
                         </div>
                     </div>
                     <img class="dashboard-section--img" src="./assets/presion.svg" alt="">
-                </div>
-                <div class="dashboard-section dashboard-readings">
+                </button>
+                <button *ngIf="sensores[types.VIENTO]" (click)="btnToggleSensor(types.VIENTO)" [ngClass]="{'disabled':sensores[types.VIENTO].disabled_sensors==1}" class="dashboard-section dashboard-readings">
                     <div class="dashboard-section--info">
                         <h3>Viento</h3>
                         <div class="dashboard-readings">
@@ -67,8 +76,8 @@
                         </div>
                     </div>
                     <img class="dashboard-section--img" src="./assets/viento.svg" alt="">
-                </div>
-                <div class="dashboard-section dashboard-readings">
+                </button>
+                <button *ngIf="sensores[types.NIVELES]" (click)="btnToggleSensor(types.NIVELES)" [ngClass]="{'disabled':sensores[types.NIVELES].disabled_sensors==1}" class="dashboard-section dashboard-readings">
                     <div class="dashboard-section--info">
                         <h3>Niveles</h3>
                         <div class="dashboard-readings">
@@ -78,10 +87,10 @@
                         </div>
                     </div>
                     <img class="dashboard-section--img" src="./assets/niveles.svg" alt="">
-                </div>
+                </button>
             </div>
             <div class="readings">
-                <div class="dashboard-section dashboard-readings">
+                <button *ngIf="sensores[types.ENERGIA]" (click)="btnToggleSensor(types.ENERGIA)" [ngClass]="{'disabled':sensores[types.ENERGIA].disabled_sensors==1}" class="dashboard-section dashboard-readings">
                     <div class="dashboard-section--info">
                         <h3>Energía</h3>
                         <div class="dashboard-readings">
@@ -91,8 +100,8 @@
                         </div>
                     </div>
                     <img class="dashboard-section--img" src="./assets/energia.svg" alt="">
-                </div>
-                <div class="dashboard-section dashboard-readings">
+                </button>
+                <button *ngIf="sensores[types.TENSION]" (click)="btnToggleSensor(types.TENSION)" [ngClass]="{'disabled':sensores[types.TENSION].disabled_sensors==1}" class="dashboard-section dashboard-readings">
                     <div class="dashboard-section--info">
                         <h3>Tensión</h3>
                         <div class="dashboard-readings">
@@ -102,8 +111,8 @@
                         </div>
                     </div>
                     <img class="dashboard-section--img" src="./assets/tension.svg" alt="">
-                </div>
-                <div class="dashboard-section dashboard-readings">
+                </button>
+                <button *ngIf="sensores[types.CO2]" (click)="btnToggleSensor(types.CO2)" [ngClass]="{'disabled':sensores[types.CO2].disabled_sensors==1}" class="dashboard-section dashboard-readings">
                     <div class="dashboard-section--info">
                         <h3>Monóxido de carbono</h3>
                         <div class="dashboard-readings">
@@ -113,8 +122,8 @@
                         </div>
                     </div>
                     <img class="dashboard-section--img" src="./assets/co2.svg" alt="">
-                </div>
-                <div class="dashboard-section dashboard-readings">
+                </button>
+                <button *ngIf="sensores[types.OTROS]" (click)="btnToggleSensor(types.OTROS)" [ngClass]="{'disabled':sensores[types.OTROS].disabled_sensors==1}" class="dashboard-section dashboard-readings">
                     <div class="dashboard-section--info">
                         <h3>Otros gases</h3>
                         <div class="dashboard-readings">
@@ -124,7 +133,7 @@
                         </div>
                     </div>
                     <img class="dashboard-section--img" src="./assets/otros-gases.svg" alt="">
-                </div>
+                </button>
             </div>
          }
          
