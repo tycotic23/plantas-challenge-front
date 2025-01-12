@@ -23,6 +23,7 @@ export class RecordFactoriesComponent implements OnInit{
   ngOnInit(): void {
     let token=this.tokenService.getToken();
     if(token){
+      this.messageService.setMessage("Cargando historial de las plantas, espere por favor");
       this.getAllRecordFactories(token);
     }
   }

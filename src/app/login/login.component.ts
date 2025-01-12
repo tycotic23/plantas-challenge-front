@@ -39,6 +39,7 @@ export class LoginComponent {
 
   login(event:Event):void{
     event.preventDefault();
+    this.setMsg("Chequeando credenciales ... espere por favor...");
     this.authService.login({
       email:this.loginForm.value.email,
       password:this.loginForm.value.password

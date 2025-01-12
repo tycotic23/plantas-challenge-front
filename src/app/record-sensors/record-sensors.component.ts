@@ -23,6 +23,7 @@ export class RecordSensorsComponent implements OnInit{
   ngOnInit(): void {
     let token=this.tokenService.getToken();
     if(token){
+      this.messageService.setMessage("Cargando historial de los sensores, espere por favor");
       this.getAllRecordFactories(token);
     }
   }

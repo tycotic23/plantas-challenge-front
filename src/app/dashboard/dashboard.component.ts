@@ -110,6 +110,7 @@ export class DashboardComponent implements OnInit{
 
     //enviar peticion
     let token=this.tokenService.getToken();
+    this.messageService.setMessage("Creando planta, espere por favor");
     if(token){
       this.factoryService.createFactory(newFactory,token).subscribe({
         next:data=>{
@@ -132,6 +133,7 @@ export class DashboardComponent implements OnInit{
 
   deleteFactory(id:number){
     let token=this.tokenService.getToken();
+    this.messageService.setMessage("Borrando planta, espere por favor");
     if(token){
       this.factoryService.deleteFactory(id,token).subscribe({
         next:_=>{
@@ -164,6 +166,7 @@ export class DashboardComponent implements OnInit{
 
         //enviar peticion
         let token=this.tokenService.getToken();
+        this.messageService.setMessage("Editando planta, espere por favor");
         if(token){
           this.sensorService.createSensor(token,newSensor).subscribe({
             next:data=>{

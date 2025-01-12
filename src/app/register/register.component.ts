@@ -46,6 +46,7 @@ registerForm:FormGroup;
 
   register(event:Event):void{
     event.preventDefault();
+    this.setMsg("Chequeando credenciales ... espere por favor...");
     this.authService.register({
       username:this.registerForm.value.username,
       email:this.registerForm.value.email,

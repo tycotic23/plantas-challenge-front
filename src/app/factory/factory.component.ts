@@ -86,6 +86,7 @@ export class FactoryComponent implements OnInit{
 
   disableSensor(type:typeSensors):void{
     let token=this.tokenService.getToken();
+    this.messageService.setMessage("Deshabilitando sensor, espere por favor");
     if(token && this.selectedFactory){
       this.sensorService.disableSensor(token,this.selectedFactory.id,type).subscribe({
         next:data=>{
@@ -101,6 +102,7 @@ export class FactoryComponent implements OnInit{
 
   enableSensor(type:typeSensors):void{
     let token=this.tokenService.getToken();
+    this.messageService.setMessage("Habilitando sensor, espere por favor");
     if(token && this.selectedFactory){
       this.sensorService.enableSensor(token,this.selectedFactory.id,type).subscribe({
         next:data=>{
@@ -146,6 +148,7 @@ export class FactoryComponent implements OnInit{
 
   getSensorsGroupByType(token:string):void{
     if(this.selectedFactory){
+      this.messageService.setMessage("Obteniendo datos de la planta, espere por favor");
       this.factoryService.getFactorySensors(token,this.selectedFactory.id).subscribe({
         next:data=>{
          
