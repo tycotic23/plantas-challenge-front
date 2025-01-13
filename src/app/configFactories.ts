@@ -1,6 +1,6 @@
 export class configFactories{
-    static baseUrl="http://localhost:8080";
-    /* static baseUrl="https://dashboard.render.com/web/srv-cu1jfhl6l47c73a4mgb0"; */
+    /* static baseUrl="http://localhost:8080"; */
+    static baseUrl="https://dashboard.render.com/web/srv-cu1jfhl6l47c73a4mgb0";
     static expireToken=10800;
 
 }
