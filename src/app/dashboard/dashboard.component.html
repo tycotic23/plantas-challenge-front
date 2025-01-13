@@ -53,15 +53,15 @@
                             <img class="flag" [src]="factory.flag" [alt]="'Bandera de '+factory.country">
                             {{factory.country}}
                         </div>
+                        <p class="view-650 p-small">{{factory.name}}</p>
                     </td>
-                    <td>{{factory.name}}</td>
-                    <td><img class="icon view-850" src="./assets/ok-l.svg">{{factory.readings}}</td>
-                    <td><img class="icon view-850" src="./assets/alertas-medias-l.svg">{{factory.medium_alerts}}</td>
-                    <td><img class="icon view-850" src="./assets/alertas-rojas-l.svg">{{factory.red_alerts}}</td>
+                    <td class="oculte-650">{{factory.name}}</td>
+                    <td class="red-650"><img class="icon view-850 oculte-650" src="./assets/ok-l.svg">{{factory.readings}}</td>
+                    <td class="red-650"><img class="icon view-850 oculte-650" src="./assets/alertas-medias-l.svg">{{factory.medium_alerts}}</td>
+                    <td class="red-650"><img class="icon view-850 oculte-650" src="./assets/alertas-rojas-l.svg">{{factory.red_alerts}}</td>
                     <td>
                         <div class="actions-menu-container">
-                            <img class="icon rotate" src="./assets/acciones.svg" alt="">
-                            <!-- <input name="actions-menu"  type="checkbox" [id]="'toogle-actions-menu-'+factory.id"> -->
+                            <img class="icon rotate oculte-500" src="./assets/acciones.svg" alt="">
                             <div class="actions-menu">
                                 <button (click)="getInEdit(factory.id)" class="tooltip"><img src="./assets/edit.svg" alt=""><span class="tooltiptextup">Editar planta</span></button>
                                 <button (click)="deleteFactory(factory.id)" class="tooltip"><img src="./assets/delete.svg" alt=""><span class="tooltiptextup">Eliminar planta</span></button>

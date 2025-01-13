@@ -29,13 +29,16 @@
                 </tr>
                 <tr *ngFor="let factory of filteredFactories">
                     <td>
-                        <img class="flag" [src]="factory.flag" [alt]="'Bandera de '+factory.country">
-                        {{factory.country}}
+                        <div class="td-flex">
+                            <img class="flag" [src]="factory.flag" [alt]="'Bandera de '+factory.country">
+                            {{factory.country}}
+                        </div>
+                        <p class="view-650 p-small">{{factory.name}}</p>
                     </td>
-                    <td>{{factory.name}}</td>
-                    <td><img class="icon view-850" src="./assets/ok-l.svg">{{factory.readings}}</td>
-                    <td><img class="icon view-850" src="./assets/alertas-medias-l.svg">{{factory.medium_alerts}}</td>
-                    <td><img class="icon view-850" src="./assets/alertas-rojas-l.svg">{{factory.red_alerts}}</td>
+                    <td class="oculte-650">{{factory.name}}</td>
+                    <td class="red-650"><img class="icon view-850 oculte-650" src="./assets/ok-l.svg">{{factory.readings}}</td>
+                    <td class="red-650"><img class="icon view-850 oculte-650" src="./assets/alertas-medias-l.svg">{{factory.medium_alerts}}</td>
+                    <td class="red-650"><img class="icon view-850 oculte-650" src="./assets/alertas-rojas-l.svg">{{factory.red_alerts}}</td>
                     <td class="action-td"><button [ngClass]="{'primary-button':!selectedFactory || selectedFactory.id!=factory.id,'secondary-button':selectedFactory && selectedFactory.id==factory.id}" (click)="selectFactory(factory.id)">{{(selectedFactory && selectedFactory.id==factory.id)?"Deseleccionar":"Seleccionar"}}</button></td>
                 </tr>
             </table>
@@ -46,7 +49,7 @@
                 <h2 class="less-h2">Monitoreo por plantas <span> | Haga click para habilitar / deshabilitar</span></h2>
                 <div class="factory-title" *ngIf="selectedFactory">
                     <img class="flag" [src]="selectedFactory.flag" [alt]="'Bandera de '+selectedFactory.country">
-                    <p>{{selectedFactory.country}}{{selectedFactory.name}}</p>
+                    <p>{{selectedFactory.country}} {{selectedFactory.name}}</p>
                 </div>
             </div>
             <div class="readings">

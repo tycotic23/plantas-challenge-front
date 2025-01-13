@@ -9,6 +9,7 @@ ul{
     font-size: 18px;
     font-weight: 600;
     align-items: center;
+    z-index: 20;
 }
 
 
@@ -38,6 +39,7 @@ ul{
     overflow: hidden;
 
     transition: all 0.4s ease-in-out;
+    z-index: 21 !important;
 }
 
 .menu-open{
@@ -147,6 +149,10 @@ legend{
     cursor: pointer;
 }
 
+.view-500{
+    display: none;
+}
+
 
 @media (max-width: 1200px) {
     .menu-open{
@@ -158,5 +164,18 @@ legend{
     .menu-open{
         width:100%;
     }
+  }
+
+  @media (max-width: 500px) {
+    .view-500{
+        display: block;
+    }
+
+    .oculte-500{
+        display: none;
+    }
+
+    
+
   }
   

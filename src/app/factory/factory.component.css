@@ -74,6 +74,10 @@ button.dashboard-readings:hover{
     font-weight: 600;
  }
 
+ select{
+    max-width: 100%;
+ }
+
  @media (max-width: 782px) {
   
     .table-header {
@@ -81,4 +85,21 @@ button.dashboard-readings:hover{
         align-items: flex-start;
         gap: 1rem;
     }
+  }
+
+  @media (max-width: 500px) {
+
+    .content{
+        background-color: var(--phone-back);
+    }
+
+    .shadow{
+        box-shadow: none;
+        border-bottom: solid 1px #F3F3F3;
+    }
+
+    .actions-menu-container{
+        gap:0.5rem;
+    }
+    
   }

@@ -29,3 +29,19 @@
     width: 14px;
 }
 
+@media (max-width: 500px) {
+
+    .content{
+        background-color: var(--phone-back);
+    }
+
+    .shadow{
+        box-shadow: none;
+        border-bottom: solid 1px #F3F3F3;
+    }
+
+    .actions-menu-container{
+        gap:0.5rem;
+    }
+    
+  }

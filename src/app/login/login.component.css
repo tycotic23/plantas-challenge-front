@@ -85,10 +85,7 @@ h3{
     font-size: 25px;
 }
 
-.p-small{
-    font-size: 12px;
-    color:#84818A;
-}
+
 
 .input-container{
     position: relative;
@@ -161,16 +158,28 @@ legend{
     }
 
     .login{
-        max-width: none;
+        padding: 2rem;
+        margin: 0;
+        height: 100vh;
+        max-width: 100%;
     }
   }
 
-  @media (max-width: 950px) {
+  @media (max-width: 500px) {
 
-    .login{
-       padding: 2rem;
-       margin: 0;
-       height: 100vh;
-       max-width: 100%;
+    .content{
+        background-color: white;
+        text-align: center;
     }
+
+    legend{
+        text-align: left;
+    }
+
+    .actions-form{
+        flex-direction: column-reverse;
+        align-items: stretch;
+        gap:1rem;
+    }
+    
   }

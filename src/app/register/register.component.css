@@ -85,10 +85,7 @@ h3{
     font-size: 25px;
 }
 
-.p-small{
-    font-size: 12px;
-    color:#84818A;
-}
+
 
 .input-container{
     position: relative;
@@ -144,9 +141,49 @@ fieldset input{
 
 legend{
     margin-left: 1rem;
-    line-height: 0.6;
+    line-height: 0.8;
 }
 
 ul{
     list-style: none;
 }
+
+@media (max-width: 1100px) {
+    .login-back{
+        padding: 3rem 3rem 4rem;
+    }
+
+   
+  }
+
+@media (max-width: 950px) {
+    .login-back{
+        display: none;
+    }
+
+    .login{
+        padding: 2rem;
+        margin: 0;
+        height: 100vh;
+        max-width: 100%;
+    }
+  }
+
+@media (max-width: 500px) {
+
+    .content{
+        background-color: white;
+        text-align: center;
+    }
+
+    legend{
+        text-align: left;
+    }
+
+    .actions-form{
+        flex-direction: column-reverse;
+        align-items: stretch;
+        gap:1rem;
+    }
+    
+  }

@@ -1,8 +1,12 @@
 <nav>
+    <li class="view-500"><button class="menu-toggle icon"  (click)="toggleMenu=true"><img src="./assets/hamburguer.svg" alt=""></button></li>
     <img class="icon-logo" src="./assets/logo.svg" alt="">
-    <a class="icon tooltip" routerLinkActive="active" routerLink="/dashboard"><img src="./assets/dashboard.svg" alt=""><span class="tooltiptext">Monitoreo global</span></a>
-    <a class="icon tooltip" routerLinkActive="active" routerLink="/factory"><img src="./assets/monitoreo-planta.svg" alt=""><span class="tooltiptext">Monitoreo por planta</span></a>
-    <a class="icon tooltip" routerLinkActive="active" routerLink="/records-sensors"><img src="./assets/hist-sensores.svg" alt=""><span class="tooltiptext">Ver historial de sensores</span></a>
-    <a class="icon tooltip" routerLinkActive="active" routerLink="/records-factories"><img src="./assets/hist-plantas.svg" alt=""><span class="tooltiptext">Ver historial de plantas</span></a>
-    <button class="icon tooltip" (click)="logOut()"><img src="./assets/cerrar-sesion.svg" alt=""><span class="tooltiptext">Cerrar sesión</span></button>
+    <ul class="nav" [ngClass]="{'view-menu':toggleMenu}">
+        <li class="view-500"><button class="icon"  (click)="toggleMenu=false"><img src="./assets/hamburguer.svg" alt=""></button></li>
+        <li><a class="icon tooltip" routerLinkActive="active" routerLink="/dashboard"><img src="./assets/dashboard.svg" alt=""><span class="tooltiptext">Monitoreo global</span></a></li>
+        <li><a class="icon tooltip" routerLinkActive="active" routerLink="/factory"><img src="./assets/monitoreo-planta.svg" alt=""><span class="tooltiptext">Monitoreo por planta</span></a></li>
+        <li><a class="icon tooltip" routerLinkActive="active" routerLink="/records-sensors"><img src="./assets/hist-sensores.svg" alt=""><span class="tooltiptext">Ver historial de sensores</span></a></li>
+        <li><a class="icon tooltip" routerLinkActive="active" routerLink="/records-factories"><img src="./assets/hist-plantas.svg" alt=""><span class="tooltiptext">Ver historial de plantas</span></a></li>
+        <li><button class="icon tooltip" (click)="logOut()"><img src="./assets/cerrar-sesion.svg" alt=""><span class="tooltiptext">Cerrar sesión</span></button></li>
+    </ul>
 </nav>
